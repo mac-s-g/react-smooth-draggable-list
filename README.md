@@ -6,28 +6,51 @@ smooth, mobile-friendly, draggable list HOC for react.
 
 ### How to Use It
 
-#### Examples
-This component is [avialable from npm](https://www.npmjs.com/package/react-smooth-draggable-list).
+#### Install
+This component can be [installed with npm](https://www.npmjs.com/package/react-smooth-draggable-list).
 ```bash
 npm install react-smooth-draggable-list --save
 ```
 
-
-
+#### Include
 ```javascript
 import List from 'react-smooth-draggable-list'
+```
 
+#### Examples
+Simple Example:
+```javascript
+const items = [1, 2, 3]
+<List rowHeight={80}>{
+  items.map(item => <div>item {item}</div>)
+}</List>
+```
+
+Controlled Example:
+```javascript
 // simple example
-<List rowHeight={80}>
-  <div>item 1</div>
-  <div>item 2</div>
-  <div>item 3</div>
-</List>
+class MyList extends React.Component {
+  // order index starts at zero
+  state = {order: [1, 0, 2]}
+
+  render() {
+    return (
+      <List
+        rowHeight={50}
+        order={this.state.order}
+        onReOrder={order => this.setState({order})}
+      >
+        <div>item 1</div>
+        <div>item 2</div>
+        <div>item 3</div>
+      </List>
+    )
+  }
+}
 ```
 
 
-
-See the [demo source code](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/demo/js/Examples.js) for more implementation examples.
+You can find more examples in the [demo source code](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/demo/js/Examples.js).
 
 #### Props
 Name|Type|Default|Description
