@@ -16,26 +16,15 @@ npm install react-smooth-draggable-list --save
 ```javascript
 import List from 'react-smooth-draggable-list'
 
-...
-
-// use List.Item with Augmentation
+// simple example
 <List rowHeight={80}>
   <div>item 1</div>
   <div>item 2</div>
-</List>
-
-...
-
-// you can also use List.Item with Augmentation
-<List rowHeight={140}>
-  <List.Item as={MyComponent}>
-    Item 1
-  </List.Item>
-  <List.Item>
-    Item 2
-  </List.Item>
+  <div>item 3</div>
 </List>
 ```
+
+
 
 See the [demo source code](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/demo/js/Examples.js) for more implementation examples.
 
