@@ -67,4 +67,4 @@ npm install react-smooth-draggable-list --save-dev
 # run the dev server on port 2100
 npm run dev
 ```
-`npm run dev` will run a dev server with hot reloading enabled.  The dev server runs at http://localhost:2100.  Dev server source code [is here](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/dev-server/js/Examples.js)
+`npm run dev` will run a dev server with hot reloading enabled.  The dev server runs at http://localhost:2100.  Dev server source code [is here](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/dev-server/js/Examples.js).
