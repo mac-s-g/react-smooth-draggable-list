@@ -60,19 +60,19 @@ class Example1 extends Component {
           <Example1Item>
             <Example1Header>item 1</Example1Header>
             <Example1Content>
-              order: <strong>{order[0]}</strong>
+              order: <strong>{order.indexOf(0)}</strong>
             </Example1Content>
           </Example1Item>
           <Example1Item>
             <Example1Header>item 2</Example1Header>
             <Example1Content>
-              order: <strong>{order[1]}</strong>
+              order: <strong>{order.indexOf(1)}</strong>
             </Example1Content>
           </Example1Item>
           <Example1Item>
             <Example1Header>item 3</Example1Header>
             <Example1Content>
-              order: <strong>{order[2]}</strong>
+              order: <strong>{order.indexOf(2)}</strong>
             </Example1Content>
           </Example1Item>
         </List>
