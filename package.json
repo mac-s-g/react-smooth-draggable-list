@@ -1,5 +1,5 @@
 {
-  "name": "react-draggable-sort",
+  "name": "react-smooth-draggable-list",
   "description": "smooth, mobile-friendly, draggable list for react.",
   "version": "0.0.0",
   "main": "dist/main.js",

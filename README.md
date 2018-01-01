@@ -1,23 +1,34 @@
-# react-draggable-sort
+### react-smooth-draggable-list
 
 smooth, mobile-friendly, draggable list for react.
 
-## How to Use It
+[Check out the Demo](https://mac-s-g.github.io/react-smooth-draggable-list/demo/dist/)
 
-## Examples
+### How to Use It
+
+#### Examples
 ```bash
 npm install react-smooth-draggable-list --save
 ```
 
 
 
-```js
+```javascript
 import List from 'react-smooth-draggable-list'
 
 ...
 
+// use List.Item with Augmentation
 <List rowHeight={80}>
-  <List.Item>
+  <div>item 1</div>
+  <div>item 2</div>
+</List>
+
+...
+
+// you can also use List.Item with Augmentation
+<List rowHeight={140}>
+  <List.Item as={MyComponent}>
     Item 1
   </List.Item>
   <List.Item>
@@ -26,7 +37,9 @@ import List from 'react-smooth-draggable-list'
 </List>
 ```
 
-### Props
+See the [demo source code](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/demo/js/Examples.js) for more implementation examples.
+
+#### Props
 Name|Type|Default|Description
 |:---|:---|:---|:---
 `order`|`array`|null|`order` is optional - when it is not defined, the list will be uncontrolled.
@@ -35,10 +48,11 @@ Name|Type|Default|Description
 `rowWidth`|`integer`|null|`RowWidth` defines the width of the list component in pixels.  Width defaults to 100% of parent.
 
 
-## How to Contrubite
+### How to Contrubite
 ```bash
 # install with dev dependencies
 npm install react-smooth-draggable-list --save-dev
 # run the dev server on port 2100
 npm run dev
 ```
+This will run a dev server with hot reloading enabled.  The dev server runs on prot 2100.  Dev server source code [is here](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/dev-server/js/Examples.js)
