@@ -7,7 +7,7 @@ smooth, mobile-friendly, draggable list HOC for react.
 ### How to Use It
 
 #### Install
-This component can be [installed with npm](https://www.npmjs.com/package/react-smooth-draggable-list).
+This component can be [installed with npm](https://www.npmjs.com/package/react-smooth-draggable-list):
 ```bash
 npm install react-smooth-draggable-list --save
 ```
@@ -28,7 +28,6 @@ const items = [1, 2, 3]
 
 Controlled Example:
 ```javascript
-// simple example
 class MyList extends React.Component {
   // order index starts at zero
   state = {order: [1, 0, 2]}
