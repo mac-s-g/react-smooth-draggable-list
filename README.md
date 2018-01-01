@@ -7,6 +7,7 @@ smooth, mobile-friendly, draggable list HOC for react.
 ### How to Use It
 
 #### Examples
+This component is [avialable from npm](https://www.npmjs.com/package/react-smooth-draggable-list).
 ```bash
 npm install react-smooth-draggable-list --save
 ```
