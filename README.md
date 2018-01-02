@@ -1,4 +1,4 @@
-## react-smooth-draggable-list
+## React _Smooth_ Draggable List
 
 smooth, mobile-friendly, draggable list component for react.
 
