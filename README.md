@@ -62,6 +62,8 @@ Name|Type|Default|Description
 `gutter`|number|`null`|Amount of space between list items in pixels. Defaults to `0.1 *  props.rowHeight`.
 
 ##### List.Item
+Name|Type|Default|Description
+|:---|:---|:---|:---
 `disabled`|boolean|`false`|Allows user to disable list items.
 
 
