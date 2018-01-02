@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Styled, { media } from "styled-components"
+import Styled from "styled-components"
 import List from "./../../src/js/"
 
 const Examples = Styled.div`
