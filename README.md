@@ -52,7 +52,7 @@ class MyList extends React.Component {
 You can find more examples in the [demo source code](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/demo/js/Examples.js).
 
 #### Props
-##### List
+##### List:
 Name|Type|Default|Description
 |:---|:---|:---|:---
 `order`|array|`null`|`order` is optional - when it is not defined, the list will be uncontrolled.
@@ -61,7 +61,7 @@ Name|Type|Default|Description
 `rowWidth`|integer|`null`|`RowWidth` defines the width of the list component in pixels.  Width defaults to 100% of parent.
 `gutter`|number|`null`|Amount of space between list items in pixels. Defaults to `0.1 *  props.rowHeight`.
 
-##### List.Item
+##### List.Item:
 Name|Type|Default|Description
 |:---|:---|:---|:---
 `disabled`|boolean|`false`|Allows user to disable list items.
