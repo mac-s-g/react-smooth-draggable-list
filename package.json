@@ -1,7 +1,7 @@
 {
   "name": "react-smooth-draggable-list",
   "description": "smooth, mobile-friendly, draggable list for react.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/main.js",
   "files": ["dist/"],
   "dependencies": {

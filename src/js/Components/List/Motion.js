@@ -36,6 +36,8 @@ export default class extends React.Component {
     }
   }
 
+  defaultOverflow = document.body.style.overflow
+
   componentDidMount() {
     window.addEventListener("touchmove", this.handleTouchMove)
     window.addEventListener("touchend", this.handleMouseUp)
@@ -44,11 +46,14 @@ export default class extends React.Component {
   }
 
   handleTouchStart = (key, pressLocation, e) => {
+    // disable document scroll while dragging
+    this.defaultOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
     this.handleMouseDown(key, pressLocation, e.touches[0])
   }
 
   handleTouchMove = e => {
-    e.preventDefault()
     this.handleMouseMove(e.touches[0])
   }
 
@@ -89,6 +94,7 @@ export default class extends React.Component {
   }
 
   handleMouseUp = () => {
+    document.body.style.overflow = this.defaultOverflow
     this.setState({ isPressed: false, topDeltaY: 0 })
   }
 
