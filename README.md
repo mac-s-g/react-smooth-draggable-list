@@ -18,7 +18,7 @@ import List from 'react-smooth-draggable-list'
 ```
 
 #### Examples
-Simple Example:
+##### Simple Example:
 ```javascript
 const items = [1, 2, 3]
 <List rowHeight={80}>{
@@ -26,7 +26,7 @@ const items = [1, 2, 3]
 }</List>
 ```
 
-Controlled Example:
+##### Controlled Example:
 ```javascript
 class MyList extends React.Component {
   // order index starts at zero
@@ -48,7 +48,7 @@ class MyList extends React.Component {
 }
 ```
 
-
+##### More:
 You can find more examples in the [demo source code](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/demo/js/Examples.js).
 
 #### Props
