@@ -37,7 +37,7 @@ const Footer = Styled.div`
   height: 50px;
   z-index: 10000;
   background-color: #eee;
-  padding-top: 20px;
+  padding-top: 28px;
   & >div {
     width: 200px;
     margin: 0 auto;
