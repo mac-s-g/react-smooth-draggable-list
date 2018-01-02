@@ -1,6 +1,6 @@
 ## react-smooth-draggable-list
 
-smooth, mobile-friendly, draggable list HOC for react.
+smooth, mobile-friendly, draggable list component for react.
 
 [Check out the Demo](https://mac-s-g.github.io/react-smooth-draggable-list/demo/dist/)
 

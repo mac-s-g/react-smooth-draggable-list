@@ -63,13 +63,13 @@ export default class extends React.Component {
 
   handleMouseMove = ({ pageY }) => {
     const { isPressed, topDeltaY, originalPosOfLastPressed } = this.state
-    const { onReOrder } = this.props
+    const { onReOrder, gutter, rowHeight } = this.props
     const order = this.getOrder()
 
     if (isPressed) {
       const mouseY = pageY - topDeltaY
       const currentRow = clamp(
-        Math.round(mouseY / (1.1 * this.props.rowHeight)),
+        Math.round(mouseY / (gutter + rowHeight)),
         0,
         this.getChildren().length - 1
       )
@@ -112,14 +112,15 @@ export default class extends React.Component {
   render() {
     const { mouseY, isPressed, originalPosOfLastPressed } = this.state
 
-    const { rowHeight, rowWidth } = this.props
+    const { rowHeight, rowWidth, gutter } = this.props
 
     return (
       <ListContainer
         rowWidth={rowWidth}
-        listHeight={rowHeight * 1.1 * this.getChildren().length}
+        listHeight={(rowHeight + gutter) * this.getChildren().length}
       >
         {this.getChildren().map((child, i) => {
+          const { disabled } = child.props
           const style =
             originalPosOfLastPressed === i && isPressed
               ? {
@@ -129,7 +130,7 @@ export default class extends React.Component {
               : {
                   scale: spring(1, springConfig),
                   y: spring(
-                    this.getOrder().indexOf(i) * (1.1 * rowHeight),
+                    this.getOrder().indexOf(i) * (gutter + rowHeight),
                     springConfig
                   )
                 }
@@ -137,8 +138,16 @@ export default class extends React.Component {
             <Motion style={style} key={i}>
               {({ scale, y }) => (
                 <ListItem
-                  onMouseDown={this.handleMouseDown.bind(null, i, y)}
-                  onTouchStart={this.handleTouchStart.bind(null, i, y)}
+                  onMouseDown={
+                    disabled === true
+                      ? null
+                      : this.handleMouseDown.bind(null, i, y)
+                  }
+                  onTouchStart={
+                    disabled === true
+                      ? null
+                      : this.handleTouchStart.bind(null, i, y)
+                  }
                   rowHeight={rowHeight}
                   style={{
                     transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
