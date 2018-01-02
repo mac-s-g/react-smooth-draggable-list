@@ -1,8 +1,8 @@
-## react-smooth-draggable-list
+## React _Smooth_ Draggable List
 
-smooth, mobile-friendly, draggable list HOC for react.
+smooth, mobile-friendly, draggable list component for react.
 
-[Check out the Demo](https://mac-s-g.github.io/react-smooth-draggable-list/demo/dist/)
+:star: [Check out the Demo](https://mac-s-g.github.io/react-smooth-draggable-list/demo/dist/) :star:
 
 ### How to Use It
 
@@ -18,7 +18,7 @@ import List from 'react-smooth-draggable-list'
 ```
 
 #### Examples
-Simple Example:
+##### Simple Example:
 ```javascript
 const items = [1, 2, 3]
 <List rowHeight={80}>{
@@ -26,7 +26,7 @@ const items = [1, 2, 3]
 }</List>
 ```
 
-Controlled Example:
+##### Controlled Example:
 ```javascript
 class MyList extends React.Component {
   // order index starts at zero
@@ -48,16 +48,23 @@ class MyList extends React.Component {
 }
 ```
 
-
+##### More:
 You can find more examples in the [demo source code](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/demo/js/Examples.js).
 
 #### Props
+##### List:
 Name|Type|Default|Description
 |:---|:---|:---|:---
-`order`|`array`|null|`order` is optional - when it is not defined, the list will be uncontrolled.
-`onReOrder`|`(order) => {}`|null|The `onReOrder` callback is invoked every time a user changes the list order.  `order` is a list of integers representing the order of items.
-`rowHeight`|`integer`|0|*Required:* `RowHeight` defines the height of each list item in pixels.
-`rowWidth`|`integer`|null|`RowWidth` defines the width of the list component in pixels.  Width defaults to 100% of parent.
+`order`|array|`null`|`order` is optional - when it is not defined, the list will be uncontrolled.
+`onReOrder`|`(order) => {}`|`null`|The `onReOrder` callback is invoked every time a user changes the list order.  `order` is a list of integers representing the order of items.
+`rowHeight`|integer|`0`|*Required:* `RowHeight` defines the height of each list item in pixels.
+`rowWidth`|integer|`null`|`RowWidth` defines the width of the list component in pixels.  Width defaults to 100% of parent.
+`gutter`|number|`null`|Amount of space between list items in pixels. Defaults to `0.1 *  props.rowHeight`.
+
+##### List.Item:
+Name|Type|Default|Description
+|:---|:---|:---|:---
+`disabled`|boolean|`false`|Allows user to disable list items.
 
 
 ### How to Contrubite

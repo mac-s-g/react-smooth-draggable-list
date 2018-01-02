@@ -10,7 +10,8 @@ export default class extends Component {
     order: PropTypes.array,
     onReOrder: PropTypes.func,
     rowHeight: PropTypes.number.isRequired,
-    rowWidth: PropTypes.number
+    rowWidth: PropTypes.number,
+    gutter: PropTypes.number
   }
 
   constructor(props) {
@@ -41,10 +42,15 @@ export default class extends Component {
   getOrder = () => (this.props.order ? this.props.order : this.state.order)
 
   render() {
-    const { children, onReOrder, ...props } = this.props
+    const { children, gutter, ...props } = this.props
 
     return (
-      <Motion {...props} order={this.getOrder()} onReOrder={this.onReOrder}>
+      <Motion
+        {...props}
+        order={this.getOrder()}
+        onReOrder={this.onReOrder}
+        gutter={typeof gutter === "number" ? gutter : 0.1 * props.rowHeight}
+      >
         {this.formatChildren(children)
           .map((child, idx) => [child, this.getOrder[idx]])
           .sort((a, b) => a[1] - b[1])
