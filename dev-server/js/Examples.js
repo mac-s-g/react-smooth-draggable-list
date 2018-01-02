@@ -92,7 +92,13 @@ export default () => (
           href="https://github.com/mac-s-g/react-smooth-draggable-list"
           target="_blank"
         >
-          Source Code
+          GitHub
+        </a>
+        <a
+          href="https://www.npmjs.com/package/react-smooth-draggable-list"
+          target="_blank"
+        >
+          NPM
         </a>
         <a
           href="https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/demo/js/Examples.js"
