@@ -32,7 +32,8 @@ export default class extends React.Component {
       topDeltaY: 0,
       mouseY: 0,
       isPressed: false,
-      originalPosOfLastPressed: 0
+      atRest: true,
+      originalPosOfLastPressed: false
     }
   }
 
@@ -62,6 +63,7 @@ export default class extends React.Component {
       topDeltaY: pageY - pressY,
       mouseY: pressY,
       isPressed: true,
+      atRest: false,
       originalPosOfLastPressed: pos
     })
   }
@@ -89,7 +91,7 @@ export default class extends React.Component {
         onReOrder ? onReOrder(newOrder) : null
       }
 
-      this.setState({ mouseY: mouseY })
+      this.setState({ mouseY: mouseY, atRest: false })
     }
   }
 
@@ -116,7 +118,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { mouseY, isPressed, originalPosOfLastPressed } = this.state
+    const { mouseY, isPressed, atRest, originalPosOfLastPressed } = this.state
 
     const { rowHeight, rowWidth, gutter } = this.props
 
@@ -141,7 +143,13 @@ export default class extends React.Component {
                   )
                 }
           return (
-            <Motion style={style} key={i}>
+            <Motion
+              style={style}
+              key={i}
+              onRest={() => {
+                this.state.isPressed ? null : this.setState({ atRest: true })
+              }}
+            >
               {({ scale, y }) => (
                 <ListItem
                   onMouseDown={
@@ -158,7 +166,7 @@ export default class extends React.Component {
                   style={{
                     transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
                     WebkitTransform: `translate3d(0, ${y}px, 0) scale(${scale})`,
-                    zIndex: i === originalPosOfLastPressed ? 100 : i
+                    zIndex: !atRest && i === originalPosOfLastPressed ? 100 : 1
                   }}
                 >
                   {child}
