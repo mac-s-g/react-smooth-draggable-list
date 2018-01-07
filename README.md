@@ -55,7 +55,7 @@ You can find more examples in the [demo source code](https://github.com/mac-s-g/
 ##### List:
 Name|Type|Default|Description
 |:---|:---|:---|:---
-`order`|array|`null`|`order` is optional - when it is not defined, the list will be uncontrolled.
+`order`|array|`null`|`order` is _optional_ - when it is not defined, the list will be uncontrolled.
 `onReOrder`|`(order) => {}`|`null`|The `onReOrder` callback is invoked every time a user changes the list order.  `order` is a list of integers representing the order of items.
 `rowHeight`|integer|`0`|*Required:* `RowHeight` defines the height of each list item in pixels.
 `rowWidth`|integer|`null`|`RowWidth` defines the width of the list component in pixels.  Width defaults to 100% of parent.
