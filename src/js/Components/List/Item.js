@@ -1,9 +1,8 @@
-import React, { Component } from "react"
+import React, { Component, cloneElement } from "react"
 import PropTypes from "prop-types"
 import getElementType from "./../../helpers/getElementType"
 
 export default class extends Component {
-  static dragHandle = null
   static propTypes = {
     disabled: PropTypes.bool
   }
@@ -14,14 +13,51 @@ export default class extends Component {
     this.ElementType = getElementType(<div />, { rest, as })
   }
 
+  formatChildren = children => {
+    if (!children) {
+      return []
+    } else if (!children.length) {
+      return [children]
+    } else {
+      return children
+    }
+  }
+
   render() {
-    const { children, style, as, ...props } = this.props
+    const {
+      children,
+      disabled,
+      style,
+      onMouseDown,
+      onTouchStart,
+      dragHandle,
+      as,
+      ...props
+    } = this.props
     return (
       <this.ElementType
         {...props}
-        style={{ ...style, boxSizing: "border-box" }}
+        style={{
+          position: "relative",
+          boxSizing: "border-box",
+          width: "100%",
+          position: "absolute",
+          pointerEvents: "auto",
+          ...style
+        }}
+        onMouseDown={disabled === true || dragHandle ? null : onMouseDown}
+        onTouchStart={disabled === true || dragHandle ? null : onTouchStart}
       >
-        {children}
+        {[
+          ...this.formatChildren(children),
+          dragHandle && !disabled
+            ? cloneElement(dragHandle, {
+                key: "drag-handle",
+                onMouseDown: onMouseDown,
+                onTouchStart: onTouchStart
+              })
+            : null
+        ]}
       </this.ElementType>
     )
   }

@@ -15,7 +15,7 @@ stop_and_remove_container || true
 # run the react-draggable-sort container
 docker run \
     -v $(pwd)/src:/react/src \
-    -v $(pwd)/dev-server:/react/dev-server \
+    -v $(pwd)/demo:/react/demo \
     -v $(pwd)/docker:/react/docker \
     -v $(pwd)/webpack:/react/webpack \
     --name=react-draggable-sort \

@@ -1,6 +1,10 @@
 import React, { Component } from "react"
+import GitHubButton from "react-github-button"
+import "react-github-button/assets/style.css"
 import Styled from "styled-components"
-import List from "./../../dist/main"
+import List from "./../../src/js/"
+
+console.log(process.env)
 
 const Examples = Styled.div`
   margin-top: 40px;
@@ -55,6 +59,12 @@ export default () => (
       <SubHeader>
         a smooth, mobile-friendly, draggable list component for react
       </SubHeader>
+      <GitHubButton
+        style={{ display: "block", margin: "10px 0 15px 0" }}
+        type="stargazers"
+        namespace="mac-s-g"
+        repo="react-smooth-draggable-list"
+      />
     </PageHeader>
 
     <ExampleContainer>
@@ -74,7 +84,7 @@ export default () => (
 
     <ExampleContainer>
       <Header>
-        example 3: <SubHeader>single item</SubHeader>
+        example 3: <SubHeader>custom spring config</SubHeader>
       </Header>
       <Example3 />
     </ExampleContainer>
@@ -84,6 +94,13 @@ export default () => (
         example 4: <SubHeader>disabled items</SubHeader>
       </Header>
       <Example4 />
+    </ExampleContainer>
+
+    <ExampleContainer>
+      <Header>
+        example 5: <SubHeader>drag handle</SubHeader>
+      </Header>
+      <Example5 />
     </ExampleContainer>
 
     <Footer>
@@ -112,9 +129,9 @@ export default () => (
 )
 
 const Example1Item = Styled.div`
+  cursor: pointer;
   background-color: #eee;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
-  height: 100px;
   border: 1px solid #aaa;
   border-radius: 2px;
   padding: 4px;
@@ -175,8 +192,8 @@ class Example1 extends Component {
 }
 
 const Example2Item = Styled.div`
+  cursor: pointer;
   background-color: #fff;
-  height: 60px;
   border: 1px solid #999;
   text-align: right;
   font-style: italic;
@@ -204,27 +221,37 @@ const Example2 = () => (
 
 const Example3Item = Styled.div`
   background-color: #fff;
-  height: 70px;
   border: 1px solid #999;
   padding: 4px 7px;
 `
 
 const Example3 = () => (
   <div>
-    <List rowHeight={70} rowWidth={240}>
+    <List
+      rowHeight={70}
+      rowWidth={240}
+      springConfig={{
+        stiffness: 500,
+        damping: 18,
+        precision: 0.05
+      }}
+    >
       <List.Item as={Example3Item}>item 1</List.Item>
+      <List.Item as={Example3Item}>item 2</List.Item>
     </List>
   </div>
 )
 
 const Example4Item = Styled.div`
+  cursor: pointer;
   background-color: #eee;
   padding: 4px 7px;
-  height: 42px;
 
   &.disabled {
     background-color: rgba(200, 0, 0, 0.3);
-    cursor: not-allowed;
+    cursor: default;
+    text-align: center;
+    padding-top: 12px;
   }
 `
 
@@ -233,13 +260,48 @@ const Example4 = () => (
     <List rowHeight={42} rowWidth={300} gutter={0}>
       <List.Item as={Example4Item}>item 1</List.Item>
       <List.Item as={Example4Item} disabled class="disabled">
+        - short term -
+      </List.Item>
+      <List.Item as={Example4Item}>item 2</List.Item>
+      <List.Item as={Example4Item} disabled class="disabled">
+        - long term -
+      </List.Item>
+      <List.Item as={Example4Item}>item 3</List.Item>
+      <List.Item as={Example4Item}>item 4</List.Item>
+    </List>
+  </div>
+)
+
+const Example5Item = Styled.div`
+  background-color: #fff;
+  border: 1px solid #999;
+  padding: 4px 7px;
+`
+
+const DragHandle = props => (
+  <div
+    {...props}
+    style={{
+      position: "absolute",
+      top: "2px",
+      right: "5px",
+      cursor: "pointer",
+      letterSpacing: "3px"
+    }}
+  >
+    ::
+  </div>
+)
+
+const Example5 = () => (
+  <div>
+    <List rowHeight={70} rowWidth={300}>
+      <List.Item dragHandle={<DragHandle />} as={Example5Item}>
+        item 1
+      </List.Item>
+      <List.Item dragHandle={<DragHandle />} as={Example5Item}>
         item 2
       </List.Item>
-      <List.Item as={Example4Item} disabled class="disabled">
-        item 3
-      </List.Item>
-      <List.Item as={Example4Item}>item 4</List.Item>
-      <List.Item as={Example4Item}>item 5</List.Item>
     </List>
   </div>
 )

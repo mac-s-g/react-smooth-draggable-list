@@ -5,8 +5,8 @@ const wds_port = 2100
 const PATHS = {
   src: path.join(__dirname, "..", "src"),
   js: path.join(__dirname, "..", "src", "js"),
-  build: path.join(__dirname, "..", "dev-server", "dist"),
-  devServer: path.join(__dirname, "..", "dev-server")
+  build: path.join(__dirname, "..", "demo", "dist"),
+  devServer: path.join(__dirname, "..", "demo")
 }
 
 const config = {

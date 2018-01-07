@@ -1,9 +1,9 @@
-import React from "react"
+import React, { cloneElement } from "react"
 import { Motion, spring } from "react-motion"
 import Styled from "styled-components"
 
 import { reinsert, clamp } from "./../../helpers/"
-const springConfig = { stiffness: 300, damping: 50, precision: 0.05 }
+const defaultSpringConfig = { stiffness: 300, damping: 50, precision: 0.05 }
 
 const ListContainer = Styled.div`
   position: relative;
@@ -13,16 +13,6 @@ const ListContainer = Styled.div`
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-`
-
-const ListItem = Styled.div`
-  cursor: pointer;
-  width: 100%;
-  position: absolute;
-  pointer-events: auto;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  height: ${props => props.rowHeight}px;
 `
 
 export default class extends React.Component {
@@ -105,6 +95,11 @@ export default class extends React.Component {
     return order ? order : this.getChildren().map((child, idx) => idx)
   }
 
+  getSpringConfig = springConfig =>
+    springConfig
+      ? { ...defaultSpringConfig, ...springConfig }
+      : defaultSpringConfig
+
   getChildren = () => {
     const { children } = this.props
 
@@ -120,7 +115,7 @@ export default class extends React.Component {
   render() {
     const { mouseY, isPressed, atRest, originalPosOfLastPressed } = this.state
 
-    const { rowHeight, rowWidth, gutter } = this.props
+    const { rowHeight, rowWidth, gutter, springConfig } = this.props
 
     return (
       <ListContainer
@@ -128,20 +123,20 @@ export default class extends React.Component {
         listHeight={(rowHeight + gutter) * this.getChildren().length}
       >
         {this.getChildren().map((child, i) => {
-          const { disabled } = child.props
           const style =
             originalPosOfLastPressed === i && isPressed
               ? {
-                  scale: spring(1, springConfig),
+                  scale: spring(1, this.getSpringConfig(springConfig)),
                   y: mouseY
                 }
               : {
-                  scale: spring(1, springConfig),
+                  scale: spring(1, this.getSpringConfig(springConfig)),
                   y: spring(
                     this.getOrder().indexOf(i) * (gutter + rowHeight),
-                    springConfig
+                    this.getSpringConfig(springConfig)
                   )
                 }
+
           return (
             <Motion
               style={style}
@@ -150,28 +145,17 @@ export default class extends React.Component {
                 this.state.isPressed ? null : this.setState({ atRest: true })
               }}
             >
-              {({ scale, y }) => (
-                <ListItem
-                  onMouseDown={
-                    disabled === true
-                      ? null
-                      : this.handleMouseDown.bind(null, i, y)
-                  }
-                  onTouchStart={
-                    disabled === true
-                      ? null
-                      : this.handleTouchStart.bind(null, i, y)
-                  }
-                  rowHeight={rowHeight}
-                  style={{
+              {({ scale, y }) =>
+                cloneElement(child, {
+                  style: {
                     transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
                     WebkitTransform: `translate3d(0, ${y}px, 0) scale(${scale})`,
-                    zIndex: !atRest && i === originalPosOfLastPressed ? 100 : 1
-                  }}
-                >
-                  {child}
-                </ListItem>
-              )}
+                    zIndex: !atRest && i === originalPosOfLastPressed ? 100 : 1,
+                    height: `${rowHeight}px`
+                  },
+                  onMouseDown: this.handleMouseDown.bind(null, i, y),
+                  onTouchStart: this.handleTouchStart.bind(null, i, y)
+                })}
             </Motion>
           )
         })}

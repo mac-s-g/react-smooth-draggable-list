@@ -11,7 +11,12 @@ export default class extends Component {
     onReOrder: PropTypes.func,
     rowHeight: PropTypes.number.isRequired,
     rowWidth: PropTypes.number,
-    gutter: PropTypes.number
+    gutter: PropTypes.number,
+    springConfig: PropTypes.shape({
+      stiffness: PropTypes.number,
+      damping: PropTypes.number,
+      precision: PropTypes.number
+    })
   }
 
   constructor(props) {

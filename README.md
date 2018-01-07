@@ -60,10 +60,12 @@ Name|Type|Default|Description
 `rowHeight`|integer|`0`|*Required:* `RowHeight` defines the height of each list item in pixels.
 `rowWidth`|integer|`null`|`RowWidth` defines the width of the list component in pixels.  Width defaults to 100% of parent.
 `gutter`|number|`null`|Amount of space between list items in pixels. Defaults to `0.1 *  props.rowHeight`.
+`springConfig`|object|`null`|Drag animation control. Object has three keys. `stiffness`: optional, defaults to `300`. `damping`: optional, defaults to `50`. `precision`: optional, defaults to `0.05`.
 
 ##### List.Item:
 Name|Type|Default|Description
 |:---|:---|:---|:---
+`dragHandle`|_Component_|`null`|Pass in a functional component.  See [demo source code](https://github.com/mac-s-g/react-smooth-draggable-list/blob/master/demo/js/Examples.js) for an example.
 `disabled`|boolean|`false`|Allows user to disable list items.
 
 
