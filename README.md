@@ -22,7 +22,7 @@ import List from 'react-smooth-draggable-list'
 ```javascript
 const items = [1, 2, 3]
 <List rowHeight={80}>{
-  items.map(item => <div>item {item}</div>)
+  items.map(item => <List.Item>item {item}</List.Item>)
 }</List>
 ```
 
@@ -39,9 +39,9 @@ class MyList extends React.Component {
         order={this.state.order}
         onReOrder={order => this.setState({order})}
       >
-        <div>item 1</div>
-        <div>item 2</div>
-        <div>item 3</div>
+        <List.Item>item 1</List.Item>
+        <List.Item>item 2</List.Item>
+        <List.Item>item 3</List.Item>
       </List>
     )
   }
