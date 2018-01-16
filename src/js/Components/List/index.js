@@ -38,7 +38,7 @@ export default class extends Component {
     ) {
       this.setState({
         order: Array.from(
-          Array(this.formatChildren(props.children).length).keys()
+          Array(this.formatChildren(this.props.children).length).keys()
         )
       })
     }
