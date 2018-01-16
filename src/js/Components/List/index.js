@@ -22,9 +22,25 @@ export default class extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      order: Array.from(
-        Array(this.formatChildren(props.children).length).keys()
-      )
+      order:
+        props.order === undefined
+          ? Array.from(Array(this.formatChildren(props.children).length).keys())
+          : null
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { order } = this.state
+    const { children } = nextProps
+    if (
+      this.props.order === undefined &&
+      this.formatChildren(children).length !== order.length
+    ) {
+      this.setState({
+        order: Array.from(
+          Array(this.formatChildren(props.children).length).keys()
+        )
+      })
     }
   }
 
