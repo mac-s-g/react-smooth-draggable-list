@@ -4,8 +4,6 @@ import "react-github-button/assets/style.css"
 import Styled from "styled-components"
 import List from "./../../src/js/"
 
-console.log(process.env)
-
 const Examples = Styled.div`
   margin-top: 40px;
   margin-left: auto;

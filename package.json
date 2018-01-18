@@ -1,11 +1,9 @@
 {
   "name": "react-smooth-draggable-list",
   "description": "smooth, mobile-friendly, draggable list for react.",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "main": "dist/main.js",
-  "files": [
-    "dist/"
-  ],
+  "files": ["dist/"],
   "dependencies": {
     "prop-types": "^15.6.0",
     "react-motion": "^0.5.2",
@@ -39,8 +37,10 @@
     "react-dom": "^16.0.0 || ^15.5.4"
   },
   "scripts": {
-    "build": "webpack --config webpack/webpack.config.js -p --display-error-details --progress --optimize-minimize",
-    "build:demo": "webpack --config webpack/webpack.config-demo.js -p --display-error-details --progress --optimize-minimize",
+    "build":
+      "webpack --config webpack/webpack.config.js -p --display-error-details --progress --optimize-minimize",
+    "build:demo":
+      "webpack --config webpack/webpack.config-demo.js -p --display-error-details --progress --optimize-minimize",
     "dev": "webpack-dev-server --open --config webpack/webpack.config-dev.js"
   },
   "repository": {},
