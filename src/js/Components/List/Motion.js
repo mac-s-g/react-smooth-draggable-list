@@ -136,11 +136,10 @@ export default class extends React.Component {
                     this.getSpringConfig(springConfig)
                   )
                 }
-
           return (
             <Motion
               style={style}
-              key={i}
+              key={child.key !== null ? child.key : i}
               onRest={() => {
                 this.state.isPressed ? null : this.setState({ atRest: true })
               }}
