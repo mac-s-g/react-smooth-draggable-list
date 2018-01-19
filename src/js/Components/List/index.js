@@ -72,10 +72,7 @@ export default class extends Component {
         onReOrder={this.onReOrder}
         gutter={typeof gutter === "number" ? gutter : 0.1 * props.rowHeight}
       >
-        {this.formatChildren(children)
-          .map((child, idx) => [child, this.getOrder()[idx]])
-          .sort((a, b) => a[1] - b[1])
-          .map(child => child[0])}
+        {this.formatChildren(children)}
       </Motion>
     )
   }
