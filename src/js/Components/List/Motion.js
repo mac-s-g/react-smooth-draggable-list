@@ -3,7 +3,7 @@ import { Motion, spring } from "react-motion"
 import Styled from "styled-components"
 
 import { reinsert, clamp } from "./../../helpers/"
-const defaultSpringConfig = { stiffness: 300, damping: 50, precision: 0.5 }
+const defaultSpringConfig = { stiffness: 300, damping: 50, precision: 0.1 }
 
 const ListContainer = Styled.div`
   position: relative;
