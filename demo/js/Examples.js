@@ -101,6 +101,13 @@ export default () => (
       <Example5 />
     </ExampleContainer>
 
+    <ExampleContainer>
+      <Header>
+        example 6: <SubHeader>physics</SubHeader>
+      </Header>
+      <Example6 />
+    </ExampleContainer>
+
     <Footer>
       <div>
         <a
@@ -303,3 +310,43 @@ const Example5 = () => (
     </List>
   </div>
 )
+
+const Example6Item = Styled.div`
+  cursor: ${({ itemGrabbed }) => (itemGrabbed ? "move" : "grab")};
+  background-color: rgba(80, 80, 250, 0.2);
+  border: 1px solid rgba(80, 80, 250, 0.5);
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+`
+
+const ex6items = [1, 2, 3, 4, 5, 6]
+
+class Example6 extends Component {
+  state = { itemGrabbed: false }
+  render() {
+    const { itemGrabbed } = this.state
+    return (
+      <div>
+        <List
+          rowHeight={30}
+          rowWidth={90}
+          onReOrder={order => console.log(order)}
+          springConfig={{ stiffness: 30, damping: 1 }}
+          gutter={1}
+        >
+          {ex6items.map((item, idx) => (
+            <List.Item key={idx}>
+              <Example6Item
+                onMouseDown={e => this.setState({ itemGrabbed: true })}
+                onMouseUp={e => this.setState({ itemGrabbed: false })}
+                onMouseOut={e => this.setState({ itemGrabbed: false })}
+                itemGrabbed={itemGrabbed}
+              />
+            </List.Item>
+          ))}
+        </List>
+      </div>
+    )
+  }
+}
