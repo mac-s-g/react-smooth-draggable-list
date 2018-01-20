@@ -27,7 +27,20 @@ export default class extends React.Component {
     }
   }
 
-  defaultOverflow = document.body.style.overflow
+  componentDidMount() {
+    this.defaultOverflow = document.body.style.overflow
+    window.addEventListener("touchmove", this.handleTouchMove)
+    window.addEventListener("touchend", this.handleMouseUp)
+    window.addEventListener("mousemove", this.handleMouseMove)
+    window.addEventListener("mouseup", this.handleMouseUp)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("touchmove", this.handleTouchMove)
+    window.removeEventListener("touchend", this.handleMouseUp)
+    window.removeEventListener("mousemove", this.handleMouseMove)
+    window.removeEventListener("mouseup", this.handleMouseUp)
+  }
 
   handleTouchStart = (key, pressLocation, e) => {
     // disable document scroll while dragging
@@ -146,11 +159,7 @@ export default class extends React.Component {
                     height: `${rowHeight}px`
                   },
                   onMouseDown: this.handleMouseDown.bind(null, i, y),
-                  onMouseUp: this.handleMouseUp.bind(null, i, y),
-                  onMouseMove: this.handleMouseMove.bind(null, i, y),
-                  onTouchStart: this.handleTouchStart.bind(null, i, y),
-                  onTouchEnd: this.handleMouseUp.bind(null, i, y),
-                  onTouchMove: this.handleTouchMove.bind(null, i, y)
+                  onTouchStart: this.handleTouchStart.bind(null, i, y)
                 })}
             </Motion>
           )
