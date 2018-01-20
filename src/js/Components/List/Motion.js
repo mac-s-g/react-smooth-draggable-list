@@ -27,13 +27,19 @@ export default class extends React.Component {
     }
   }
 
-  defaultOverflow = document.body.style.overflow
-
   componentDidMount() {
+    this.defaultOverflow = document.body.style.overflow
     window.addEventListener("touchmove", this.handleTouchMove)
     window.addEventListener("touchend", this.handleMouseUp)
     window.addEventListener("mousemove", this.handleMouseMove)
     window.addEventListener("mouseup", this.handleMouseUp)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("touchmove", this.handleTouchMove)
+    window.removeEventListener("touchend", this.handleMouseUp)
+    window.removeEventListener("mousemove", this.handleMouseMove)
+    window.removeEventListener("mouseup", this.handleMouseUp)
   }
 
   handleTouchStart = (key, pressLocation, e) => {
